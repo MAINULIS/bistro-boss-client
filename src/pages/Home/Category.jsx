@@ -8,10 +8,15 @@ import silder2 from '../../assets/home/slide2.jpg';
 import silder3 from '../../assets/home/slide3.jpg';
 import silder4 from '../../assets/home/slide4.jpg';
 import silder5 from '../../assets/home/slide5.jpg';
+import SectionTitle from '../../components/SectionTitle/SectionTitle';
 const Category = () => {
     return (
-        <>
-        <Swiper
+       <section>
+        <SectionTitle
+           Heading={"Order Online"}
+           SubHeading={"From 11:00am to 10:00pm"}
+        ></SectionTitle>
+         <Swiper
           slidesPerView={4}
           spaceBetween={30}
           centeredSlides={true}
@@ -21,13 +26,13 @@ const Category = () => {
           modules={[Pagination]}
           className="mySwiper mb-24"
         >
-          <SwiperSlide><img src={silder1} alt="" /> <h3 className='text-3xl font-serif text-white text-center -mt-16 uppercase'>Salads</h3></SwiperSlide>
-          <SwiperSlide><img src={silder2} alt="" /> <h3 className='text-3xl font-serif text-white text-center -mt-16 uppercase'>Pizzas</h3></SwiperSlide>
-          <SwiperSlide><img src={silder3} alt="" /> <h3 className='text-3xl font-serif text-white text-center -mt-16 uppercase'>Soups</h3></SwiperSlide>
-          <SwiperSlide><img src={silder4} alt="" /> <h3 className='text-3xl font-serif text-white text-center -mt-16 uppercase'>desserts</h3></SwiperSlide>
-          <SwiperSlide><img src={silder5} alt="" /><h3 className='text-3xl font-serif text-white text-center -mt-16 uppercase'>Salads</h3></SwiperSlide>         
+          <SwiperSlide><img src={silder1} alt="" /> <h3 className='md:text-3xl font-serif text-white text-center -mt-14 uppercase'>Salads</h3></SwiperSlide>
+          <SwiperSlide><img src={silder2} alt="" /> <h3 className='md:text-3xl font-serif text-white text-center -mt-14 uppercase'>Pizzas</h3></SwiperSlide>
+          <SwiperSlide><img src={silder3} alt="" /> <h3 className='md:text-3xl font-serif text-white text-center -mt-14 uppercase'>Soups</h3></SwiperSlide>
+          <SwiperSlide><img src={silder4} alt="" /> <h3 className='md:text-3xl font-serif text-white text-center -mt-14 uppercase'>desserts</h3></SwiperSlide>
+          <SwiperSlide><img src={silder5} alt="" /><h3 className='md:text-3xl font-serif text-white text-center -mt-14 uppercase'>Salads</h3></SwiperSlide>         
         </Swiper>
-      </>
+       </section>
     );
 };
 
