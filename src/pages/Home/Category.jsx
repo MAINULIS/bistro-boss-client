@@ -11,7 +11,7 @@ import silder5 from '../../assets/home/slide5.jpg';
 import SectionTitle from '../../components/SectionTitle/SectionTitle';
 const Category = () => {
     return (
-       <section>
+       <section className='md:w-3/4 mx-auto'>
         <SectionTitle
            Heading={"Order Online"}
            SubHeading={"From 11:00am to 10:00pm"}
