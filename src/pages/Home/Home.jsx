@@ -1,6 +1,7 @@
 import Banner from "./Banner";
 import BistroBanner from "./BistroBanner";
 import Category from "./Category";
+import Featured from "./Featured/Featured";
 import MenuForm from "./MenuForm";
 import SliderCard from "./SliderCard";
 
@@ -12,6 +13,7 @@ const Home = () => {
             <BistroBanner></BistroBanner>
             <MenuForm></MenuForm>
             <SliderCard></SliderCard>
+            <Featured></Featured>
         </div>
     );
 };

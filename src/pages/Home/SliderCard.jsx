@@ -19,7 +19,7 @@ const SliderCard = () => {
                 SubHeading={"Should Try"}
                 Heading={"CHEF RECOMMENDS"}
             ></SectionTitle>
-            <div className="grid md:grid-cols-3 gap-4 space-x-4 space-y-5">
+            <div className="grid md:grid-cols-3 gap-5 p-4 space-y-5">
                 {
                     card.slice(0, 6).map(item => <CardInfo
                     key={item._id}
