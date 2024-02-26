@@ -4,6 +4,7 @@ import Category from "./Category";
 import Featured from "./Featured/Featured";
 import MenuForm from "./MenuForm";
 import SliderCard from "./SliderCard";
+import Testimonials from "./Testimonials/Testimonials";
 
 const Home = () => {
     return (
@@ -14,6 +15,7 @@ const Home = () => {
             <MenuForm></MenuForm>
             <SliderCard></SliderCard>
             <Featured></Featured>
+            <Testimonials></Testimonials>
         </div>
     );
 };
