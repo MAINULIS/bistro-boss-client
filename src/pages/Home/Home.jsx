@@ -2,6 +2,7 @@ import Banner from "./Banner";
 import BistroBanner from "./BistroBanner";
 import Category from "./Category";
 import MenuForm from "./MenuForm";
+import SliderCard from "./SliderCard";
 
 const Home = () => {
     return (
@@ -10,6 +11,7 @@ const Home = () => {
             <Category></Category>
             <BistroBanner></BistroBanner>
             <MenuForm></MenuForm>
+            <SliderCard></SliderCard>
         </div>
     );
 };
