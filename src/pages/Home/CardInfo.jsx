@@ -11,7 +11,7 @@ const CardInfo = ({ item }) => {
         <h2 className="card-title">{name}</h2>
         <p>{recipe}</p>
         <div className="card-actions">
-            <button className="btn uppercase text-[#BB8506] bg-neutral-600">Add To Card</button>
+            <button className="btn uppercase text-[#BB8506] bg-neutral-600  border-0 border-b-4 border-[#BB8506]">Add To Card</button>
         </div>
     </div>
 </div>

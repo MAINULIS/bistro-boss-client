@@ -37,7 +37,7 @@ const Testimonials = () => {
                                 readOnly
                             />
                             <FaQuoteLeft  className="w-16 h-16 text-black my-5"/>
-                            <p>{review.details}</p>
+                            <p className="text-gray-700">{review.details}</p>
                             <h3 className="text-center text-3xl font-medium text-yellow-500">{review.name}</h3>
                         </div>
                     </SwiperSlide>)

@@ -13,7 +13,7 @@ const [menu, setMenu] = useState([]);
         })
     }, [])
     return (
-        <section className="mt-24">
+        <section className="my-24">
             <SectionTitle
             SubHeading={"Check it out"}
             Heading={"FROM OUR MENU"}
