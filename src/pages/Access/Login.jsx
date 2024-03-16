@@ -1,9 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+import { AuthContext } from '../../provider/AuthProvider';
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
 const captchaRef = useRef(null);
 const [disabled, setDisabled] = useState(true);
+const {signIn} = useContext(AuthContext);
+
     useEffect(()=> {
         loadCaptchaEnginge(6); 
     }, [])
@@ -14,6 +19,7 @@ const [disabled, setDisabled] = useState(true);
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password)
+      
     }
 
     const handleCaptcha = () => {
@@ -28,9 +34,13 @@ const [disabled, setDisabled] = useState(true);
 
     }
     return (
+        <>
+           <Helmet>
+                <title>Bistro Boss / Login</title>
+            </Helmet>
         <div className="hero min-h-screen ">
-            <div className="hero-content flex-col lg:flex-row md:m-24">
-                <div className="text-center md:w-1/2 lg:text-left">
+            <div className="hero-content flex-col md:flex-row md:m-24">
+                <div className="text-center md:w-1/2 md:text-left">
                     <h1 className="text-5xl font-bold">Login now!</h1>
                     <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                 </div>
@@ -66,9 +76,13 @@ const [disabled, setDisabled] = useState(true);
                             <input disabled={disabled} className="btn bg-[#D1A054] hover:bg-[#D1A0de] border-none text-white" type="submit" value="Sign In" />
                         </div>
                     </form>
+                    <div className='text-center'>
+                        <p className='text-[#D1A054]'>New here? Create a <Link to="/signUp" className='underline font-semibold'>New Account</Link></p>
+                    </div>
                 </div>
             </div>
         </div>
+        </>
     );
 };
 
