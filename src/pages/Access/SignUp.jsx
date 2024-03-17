@@ -1,10 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form"
 import { Helmet } from "react-helmet-async";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/"
     const{createUser} = useContext(AuthContext);
     const {
         register,
@@ -18,7 +22,25 @@ const SignUp = () => {
         .then(result => {
             const newUser = result.user;
             console.log(newUser)
+            Swal.fire({
+                title:"You Have Been Successfully Sign Up",
+                showClass: {
+                  popup: `
+                    animate__animated
+                    animate__fadeInUp
+                    animate__faster
+                  `
+                },
+                hideClass: {
+                  popup: `
+                    animate__animated
+                    animate__fadeOutDown
+                    animate__faster
+                  `
+                }
+              });
         })
+        navigate(from, {replace: true})
     };
     return (
         <>
