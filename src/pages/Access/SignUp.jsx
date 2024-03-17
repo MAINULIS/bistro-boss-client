@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import SocialLogin from "./SocialLogin";
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -88,9 +89,13 @@ const SignUp = () => {
                             <div className="form-control mt-6">
                                 <input className="btn bg-[#D1A054] hover:bg-[#D1A0de] border-none text-white" type="submit" value="Sign In" />
                             </div>
-                        </form>
                         <div className='text-center'>
                             <p className='text-[#D1A054]'>Already registered? Go to <Link to="/login" className='underline font-semibold'>Log In </Link></p>
+                        </div>
+                        </form>
+                        <div>
+                            <h5 className='text-center text-xl font-semibold text-black'>Or Sign In with</h5>
+                             <SocialLogin></SocialLogin>
                         </div>
                     </div>
                 </div>
