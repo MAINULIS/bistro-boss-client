@@ -1,14 +1,15 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+import { FaCartPlus } from "react-icons/fa6";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
-    
+
     const handleLogOut = () => {
         logOut()
-        .then( () => {})
-        .catch(error => console.log(error))
+            .then(() => { })
+            .catch(error => console.log(error))
 
     }
 
@@ -17,6 +18,10 @@ const Navbar = () => {
         <li><Link to="/menu">OUR MENU</Link></li>
         <li><Link to="/">DASHBOARD</Link></li>
         <li><Link to="/order/salad">OUR SHOP</Link></li>
+        <li> <Link to="/"><button className="flex">
+            <FaCartPlus className="w-7 h-7 " />
+            <div className="badge badge-secondary">0</div>
+        </button></Link></li>
 
     </>
     return (
@@ -52,7 +57,7 @@ const Navbar = () => {
                             data-te-toggle="tooltip"
                             title={`Hi! I'm ${user?.displayName}`}
                             src={user?.photoURL || "https://tecdn.b-cdn.net/img/new/avatars/2.webp"}
-                            className="w-12 rounded-full"
+                            className="w-14 h-14 rounded-full"
                             alt="Avatar"
                         />
                     </Link>

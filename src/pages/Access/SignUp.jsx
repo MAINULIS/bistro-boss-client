@@ -10,10 +10,11 @@ const SignUp = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/"
-    const{createUser} = useContext(AuthContext);
+    const{createUser, updateUserProfile} = useContext(AuthContext);
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm();
 
@@ -23,25 +24,35 @@ const SignUp = () => {
         .then(result => {
             const newUser = result.user;
             console.log(newUser)
-            Swal.fire({
-                title:"You Have Been Successfully Sign Up",
-                showClass: {
-                  popup: `
-                    animate__animated
-                    animate__fadeInUp
-                    animate__faster
-                  `
-                },
-                hideClass: {
-                  popup: `
-                    animate__animated
-                    animate__fadeOutDown
-                    animate__faster
-                  `
-                }
-              });
+            // update user info
+            updateUserProfile(data.name, data.url)
+            .then( () => {
+                Swal.fire({
+                    title:"You Have Been Successfully Sign Up",
+                    showClass: {
+                      popup: `
+                        animate__animated
+                        animate__fadeInUp
+                        animate__faster
+                      `
+                    },
+                    hideClass: {
+                      popup: `
+                        animate__animated
+                        animate__fadeOutDown
+                        animate__faster
+                      `
+                    }
+                  });
+                  reset();
+            })
+            .catch(error => {
+                console.log(error)
+            })
+            
         })
         navigate(from, {replace: true})
+
     };
     return (
         <>
@@ -66,6 +77,13 @@ const SignUp = () => {
                             </div>
                             <div className="form-control">
                                 <label className="label">
+                                    <span className="label-text text-xl text-black">Photo URL</span>
+                                </label>
+                                <input type="url" name="url" {...register("url", { required: true })} placeholder="type here" className="input input-bordered bg-white" />
+                                {errors.url && <span className="text-warning"> Photo URL is required</span>}
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
                                     <span className="label-text text-xl text-black">Email</span>
                                 </label>
                                 <input type="email" name="email" {...register("email", { required: true })} placeholder="email" className="input input-bordered bg-white" />
@@ -87,14 +105,14 @@ const SignUp = () => {
                             </div>
 
                             <div className="form-control mt-6">
-                                <input className="btn bg-[#D1A054] hover:bg-[#D1A0de] border-none text-white" type="submit" value="Sign In" />
+                                <input className="btn bg-[#D1A054] hover:bg-[#D1A0de] border-none text-white" type="submit" value="Sign Up" />
                             </div>
                         <div className='text-center'>
                             <p className='text-[#D1A054]'>Already registered? Go to <Link to="/login" className='underline font-semibold'>Log In </Link></p>
                         </div>
                         </form>
                         <div>
-                            <h5 className='text-center text-xl font-semibold text-black'>Or Sign In with</h5>
+                            <h5 className='text-center text-xl font-semibold text-black divider'>Or Sign In with</h5>
                              <SocialLogin></SocialLogin>
                         </div>
                     </div>

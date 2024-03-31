@@ -122,14 +122,15 @@ const Login = () => {
 
                             </div>
                             <div className="form-control mt-6">
-                                <input disabled={disabled} className="btn bg-[#D1A054] hover:bg-[#D1A0de] border-none text-white" type="submit" value="Sign In" />
+                                {/* TODO: make the button disable for the captcha */}
+                                <input disabled={false} className="btn bg-[#D1A054] hover:bg-[#D1A0de] border-none text-white" type="submit" value="Sign In" />
                             </div>
                             <div className='text-center'>
                                 <p className='text-[#D1A054]'>New here? Create a <Link to="/signUp" className='underline font-semibold'>New Account</Link></p>
                             </div>
                         </form>
                         <div>
-                            <h5 className='text-center text-xl font-semibold text-black'>Or Sign In with</h5>
+                            <h5 className='text-center text-xl font-semibold text-black divider'>Or Sign In with</h5>
                              <SocialLogin></SocialLogin>
                         </div>
                     </div>

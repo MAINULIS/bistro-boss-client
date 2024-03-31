@@ -1,6 +1,8 @@
 import FoodCard from "../../../components/FoodCard/FoodCard";
 
 const OrderTab = ({items}) => {
+
+    // TODO: implement pagination here
     return (
         <div className="grid md:grid-cols-3 gap-5 p-4 space-y-5">
         {
