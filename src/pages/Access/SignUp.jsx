@@ -19,7 +19,7 @@ const SignUp = () => {
     } = useForm();
 
     const onSubmit = (data) => {
-        console.log(data)
+        // console.log(data)
         createUser(data.email, data.password)
         .then(result => {
             const newUser = result.user;
@@ -27,6 +27,20 @@ const SignUp = () => {
             // update user info
             updateUserProfile(data.name, data.url)
             .then( () => {
+                const userInfo = {name: data.name, email:data.email}
+
+                fetch('http://localhost:5000/users', {
+                    method:"POST",
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body:JSON.stringify(userInfo)
+                })
+
+                .then(res => res.json())
+                .then(data => {
+                    if(data.insertedId){
+                  reset();      
                 Swal.fire({
                     title:"You Have Been Successfully Sign Up",
                     showClass: {
@@ -44,7 +58,9 @@ const SignUp = () => {
                       `
                     }
                   });
-                  reset();
+                    }
+                })
+
             })
             .catch(error => {
                 console.log(error)

@@ -18,9 +18,9 @@ const Navbar = () => {
     const navOptions = <>
         <li><Link to="/">HOME</Link></li>
         <li><Link to="/menu">OUR MENU</Link></li>
-        <li><Link to="/dashboard">DASHBOARD</Link></li>
+        <li><Link to="/">DASHBOARD</Link></li>
         <li><Link to="/order/salad">OUR SHOP</Link></li>
-        <li> <Link to="/"><button className="flex">
+        <li> <Link to="/dashboard"><button className="flex">
             <FaCartPlus className="w-7 h-7 " />
             <div className="badge badge-secondary">{cart?.length || 0}</div>
         </button></Link></li>

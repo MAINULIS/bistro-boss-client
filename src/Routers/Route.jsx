@@ -9,7 +9,9 @@ import PrivateRoutes from "./PrivateRoutes";
 import Profile from "../pages/Shared/profile/Profile";
 import Dashboard from "../Layouts/Dashboard";
 import MyCart from "../pages/Dashboard/MyCart/MyCart";
-import DHome from "../pages/Dashboard/DHome/DHome";
+import AllUsers from "../pages/Dashboard/AllUser/AllUsers";
+import AdminHome from "../pages/Dashboard/DHome/AdminHome";
+import UserHome from "../pages/Dashboard/DHome/UserHome";
 
 export const router = createBrowserRouter([
   {
@@ -42,21 +44,30 @@ export const router = createBrowserRouter([
       }
     ]
   },
+  // Dashboard routes
   {
     path: "/dashboard",
-    element: <Dashboard></Dashboard>,
+    element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
     children: [
       {
         path:"myCart",
         element:<MyCart></MyCart>
       },
       {
-        path:"home",
-        element:<DHome></DHome>
+        path:"adminHome",
+        element:<AdminHome></AdminHome>
+      },
+      {
+        path:"userHome",
+        element:<UserHome></UserHome>
       },
       {
         path:"reservation",
         element:<MyCart></MyCart>
+      },
+      {
+        path:"allUsers",
+        element: <AllUsers></AllUsers>
       }
     ]
   }

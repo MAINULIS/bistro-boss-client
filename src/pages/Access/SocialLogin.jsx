@@ -16,24 +16,19 @@ const SocialLogin = () => {
         .then(result => {
             const loggedUser = result.user;
             console.log(loggedUser)
-            Swal.fire({
-                title: "You Have Been Successfully Sign In",
-                showClass: {
-                    popup: `
-                animate__animated
-                animate__fadeInUp
-                animate__faster
-              `
-                },
-                hideClass: {
-                    popup: `
-                animate__animated
-                animate__fadeOutDown
-                animate__faster
-              `
-                }
-            });
-            navigate(from, {replace: true})
+            const userInfo = {name: loggedUser.displayName, email:loggedUser.email}
+            fetch('http://localhost:5000/users', {
+                    method:"POST",
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body:JSON.stringify(userInfo)
+                })
+
+                .then(res => res.json())
+                .then(() => {   
+                        navigate(from, {replace: true})
+                })
         })
         .catch(error => {
             Swal.fire({

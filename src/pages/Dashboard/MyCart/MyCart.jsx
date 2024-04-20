@@ -54,8 +54,8 @@ const MyCart = () => {
             <div className="overflow-x-auto">
                 <table className="table ">
                     {/* head */}
-                    <thead className="text-black">
-                        <tr>
+                    <thead className="text-white bg-[#D1A054]">
+                        <tr className=" ">
                             <th>#</th>
                             <th>Food</th>
                             <th>Item Name</th>
