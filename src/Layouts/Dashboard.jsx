@@ -30,8 +30,8 @@ const Dashboard = () => {
                         isAdmin ? <>
                         {/* Admin Sidebar content here */}
                     <li><NavLink to="/dashboard/adminHome"><FaHome className="w-7 h-5"></FaHome>Admin Home</NavLink></li>
-                    <li><NavLink to="/dashboard/addItems"><ImSpoonKnife  className="w-7 h-5"></ImSpoonKnife >Add items</NavLink></li>
-                    <li><NavLink to="/dashboard/history"><BiSolidWalletAlt className="w-7 h-5"></BiSolidWalletAlt>manage items</NavLink></li>
+                    <li><NavLink to="/dashboard/addItem"><ImSpoonKnife  className="w-7 h-5"></ImSpoonKnife >Add an item</NavLink></li>
+                    <li><NavLink to="/dashboard/manageItems"><BiSolidWalletAlt className="w-7 h-5"></BiSolidWalletAlt>manage items</NavLink></li>
                     <li><NavLink to="/dashboard/booking"><FaBook className="w-7 h-5"></FaBook>manage bookings</NavLink></li>
                     <li><NavLink to="/dashboard/allUsers"><FaUsers className="w-7 h-5"></FaUsers>all users</NavLink></li>
                         </> : <>
