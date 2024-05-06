@@ -3,6 +3,7 @@ import useCart from "../../../hooks/useCart";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MyCart = () => {
     const [cart, refetch] = useCart();
@@ -18,24 +19,24 @@ const MyCart = () => {
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!"
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
-             fetch(`http://localhost:5000/carts/${item._id}`, {
-                method: "DELETE"
-             })
-             .then(res => res.json())
-             .then(data =>{
-                if(data.deletedCount > 0){
-                    refetch();
-                    Swal.fire({
-                        title: "Deleted!",
-                        text: "Your file has been deleted.",
-                        icon: "success"
-                      });
-                }
-             })
+                fetch(`http://localhost:5000/carts/${item._id}`, {
+                    method: "DELETE"
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            refetch();
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                    })
             }
-          });
+        });
     }
     return (
         <div className="w-full">
@@ -49,7 +50,9 @@ const MyCart = () => {
             <div className="text-black uppercase font-semibold flex justify-evenly h-14 items-center">
                 <h3 className="text-3xl">Total Items: {cart.length}</h3>
                 <h3 className="text-3xl">Total price: ${total}</h3>
+                <Link to="/dashboard/payment">
                 <button className="btn btn-warning btn-sm text-white">Pay</button>
+                </Link>
             </div>
             <div className="overflow-x-auto">
                 <table className="table ">
