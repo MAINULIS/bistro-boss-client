@@ -2,7 +2,9 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
-import './CheckoutForm.css'
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+// import './CheckoutForm.css'
 
 const CheckoutForm = ({ price, cart }) => {
     const stripe = useStripe();
@@ -13,6 +15,7 @@ const CheckoutForm = ({ price, cart }) => {
     const [clientSecret, setClientSecret] = useState('');
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState("");
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -92,6 +95,14 @@ const CheckoutForm = ({ price, cart }) => {
                     console.log(res.data);
                     if (res.data.insertedId) {
                         // display confirm
+                        navigate('/')
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: `Transaction completed Successfully. Your TransactionId: ${transactionId}`,
+                            showConfirmButton: false,
+                            timer: 1500
+                          });
                     }
                 })
         }
@@ -100,7 +111,7 @@ const CheckoutForm = ({ price, cart }) => {
     return (
         <>
             <form className="w-2/3 mx-auto m-8" onSubmit={handleSubmit}>
-                <CardElement
+                <CardElement className="shadow-lg p-3 hover:shadow-xl"
                     options={{
                         style: {
                             base: {
@@ -120,10 +131,10 @@ const CheckoutForm = ({ price, cart }) => {
                     Pay
                 </button>
                 {
-                    cardError && <p className="text-red-600 mt-6 text-center">{cardError}</p>
+                    cardError && <p className="text-red-600 mt-6 text-center text-xl">{cardError}</p>
                 }
                 {
-                    transactionId && <p className="text-green-600 mt-6 text-center">Transaction completed Successfully. Your TransactionId: {transactionId}</p>
+                    transactionId && <p className="text-green-600 mt-6 text-center text-xl">Transaction completed Successfully. Your TransactionId: {transactionId}</p>
                 }
             </form>
 

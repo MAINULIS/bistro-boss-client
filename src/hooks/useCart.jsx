@@ -21,7 +21,7 @@ const useCart = () => {
         // or
         queryFn: async () =>{
             const response = await axiosInstance(`/carts?email=${user?.email}`)
-            console.log('res from axios', response)
+            // console.log('res from axios', response)
             return response.data
         },
       })
